@@ -43,7 +43,7 @@
     <p class="text-white text-xs sm:text-sm mb-6 leading-tight">
      Sebelum membeli diharapkan sudah memeriksa UID anda. jika salah UID itu sudah bukan tanggung jawab seller! karena itu murni salah anda. jadi mohon diperhatikan baik-baik
     </p>
-    <a href="https://t.me/adenf9" class="bg-white text-[#3a0f17] text-xs sm:text-sm font-normal px-3 py-1.5 sm:px-4 sm:py-2 rounded-sm hover:bg-gray-200 transition inline-block">
+    <a href="https://example.com" class="bg-white text-[#3a0f17] text-xs sm:text-sm font-normal px-3 py-1.5 sm:px-4 sm:py-2 rounded-sm hover:bg-gray-200 transition inline-block">
      Beli Klik Disini »
     </a>
 
@@ -79,6 +79,10 @@
       Payment : Qris All Pay
      </p>
     </div>
+
+    <div class="mt-6 text-white text-xs sm:text-sm font-semibold tracking-widest">
+     Jumlah Kunjungan Website: <span id="visitCount">0</span>
+    </div>
    </section>
    <section class="relative lg:w-1/2 flex justify-center lg:justify-end w-full max-w-md sm:max-w-lg lg:max-w-xl">
     <img alt="Centaur Warrunner hero image, a large armored centaur warrior holding a huge axe with glowing orange details on a dark red smoky background" class="max-w-full h-auto object-contain" height="700" src="qrid.webp" width="350"/>
@@ -91,5 +95,16 @@
     </div>
    </section>
   </main>
+  <script>
+   // Simple visit count using localStorage
+    const visitCountEl = document.getElementById('visitCount');
+    let visits = localStorage.getItem('visitCount');
+    if (!visits) {
+      visits = 0;
+    }
+    visits = parseInt(visits) + 1;
+    localStorage.setItem('visitCount', visits);
+    visitCountEl.textContent = visits.toLocaleString();
+  </script>
  </body>
 </html>
