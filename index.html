@@ -29,7 +29,7 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-12">
    <section class="lg:w-1/2 mt-8 sm:mt-12 max-w-lg sm:max-w-xl lg:max-w-none">
     <div class="mb-4 text-white text-xs sm:text-sm font-semibold tracking-widest">
-     🏃Jumlah Kamu Mengunjungi Web: <span id="visitCount">Loading...</span>
+     🏃Jumlah Kamu Mengunjungi Web: <span id="visitCount">0</span>
     </div>
     <p class="text-white text-xs sm:text-sm font-bold tracking-widest mb-2">
      MAIN KOK GA NYAMAN? YA VIP LAH WOK
@@ -95,20 +95,15 @@
    </section>
   </main>
   <script>
-   // Fetch global visit count from a public API or your own backend
-   // This example uses a free public API from countapi.xyz for demonstration
-   const visitCountEl = document.getElementById('visitCount');
-   const namespace = 'raden-game-shop';
-   const key = 'global-visit-count';
-
-   fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-    .then(response => response.json())
-    .then(data => {
-      visitCountEl.textContent = data.value.toLocaleString();
-    })
-    .catch(() => {
-      visitCountEl.textContent = 'N/A';
-    });
+   // Simple visit count using localStorage
+    const visitCountEl = document.getElementById('visitCount');
+    let visits = localStorage.getItem('visitCount');
+    if (!visits) {
+      visits = 0;
+    }
+    visits = parseInt(visits) + 1;
+    localStorage.setItem('visitCount', visits);
+    visitCountEl.textContent = visits.toLocaleString();
   </script>
  </body>
 </html>
